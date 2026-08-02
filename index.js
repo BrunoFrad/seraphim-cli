@@ -1,6 +1,6 @@
 import { Command } from "commander";
-import {asciiLogo} from "./logo.js";
-import {addServerCommand} from "./commands.js";
+import {asciiLogo} from "./lib/logo.js";
+import {addServerCommand} from "./lib/commands.js";
 
 const program = new Command();
 
