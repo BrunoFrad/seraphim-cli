@@ -1,6 +1,6 @@
 import { Command } from "commander";
 import {asciiLogo} from "./lib/logo.js";
-import {addServerCommand} from "./lib/commands.js";
+import {addServerCommand, addStatusCommand} from "./lib/commands.js";
 
 const program = new Command();
 
@@ -10,5 +10,6 @@ program
     .version("\n\n" + asciiLogo + "\n\t\t\t\t\t\t\t\tVersion 0.0.1\n");
 
 addServerCommand(program);
+addStatusCommand(program);
 
 program.parse(process.argv);
