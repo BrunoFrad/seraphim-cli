@@ -1,16 +1,10 @@
-import * as http from "node:http";
+import express from "express";
 
 const PORT = process.argv[2];
+const server = express()
 
-const server = http.createServer((req, res) => {
-    res.setHeader("Content-Type", "aplication/json");
-
-    if (req.url === "/" && req.method === "GET") {
-        res.writeHead(200);
-        res.end(JSON.stringify(
-            { message: "Connected" }
-            ));
-    }
+server.get('/', (req, res) => {
+    res.send("Server running");
 });
 
 server.listen(PORT);
