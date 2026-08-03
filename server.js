@@ -26,6 +26,8 @@ server.post('/', (req, res) => {
     } catch (error) {
         res.status(500);
     }
+
+    db.close();
     res.status(200);
 });
 
