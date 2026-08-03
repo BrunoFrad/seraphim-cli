@@ -16,7 +16,8 @@ server.post('/', (req, res) => {
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     username TEXT NOT NULL,
     payload_content TEXT NOT NULL,
-    window TEXT NOT NULL
+    window TEXT NOT NULL,
+    registred_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
   )`);
 
     const insertPayload = db.prepare(`INSERT INTO logs (username, payload_content, window) VALUES (?, ?, ?)`);
