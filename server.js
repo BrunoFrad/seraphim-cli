@@ -25,11 +25,11 @@ server.post('/', (req, res) => {
     try {
         insertPayload.run(req.body.usuario, req.body.teclas.trimEnd(), req.body.janela);
     } catch (error) {
-        res.status(500);
+        res.status(500).send();
     }
 
     db.close();
-    res.status(200);
+    res.status(200).send();
 });
 
 server.listen(PORT);
