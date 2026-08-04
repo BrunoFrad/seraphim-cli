@@ -2,3 +2,4 @@
 node_modules
 seraphim.db
 server.data
+.env
