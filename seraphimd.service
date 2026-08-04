@@ -1,0 +1,10 @@
+[Unit]
+Description=SeraphimD
+
+[Service]
+WorkingDirectory=/home/your_username/.local/bin/seraphim
+ExecStart=/home/your_username/.local/bin/seraphim/seraphimd.sh
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

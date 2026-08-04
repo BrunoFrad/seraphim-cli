@@ -1,12 +1,15 @@
 import express from "express";
 import Database from "better-sqlite3";
-import { Agent } from "node:http";
 import path from 'node:path'
 
 const PORT = process.argv[2];
 
 const server = express()
 server.use(express.json())
+
+server.get("/", (req, res) => {
+    res.status(200).send("Server is running!");
+})
 
 server.get('/download', (req, res) => {
     const target = {
