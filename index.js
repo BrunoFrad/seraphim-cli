@@ -1,5 +1,6 @@
 import { Command } from "commander";
 import {asciiLogo} from "./lib/logo.js";
+import {addBuildCommand, addServerCommand, addStatusCommand} from "./lib/commands.js";
 import {addSearchCommand, addSendEmail, addServerCommand, addStatusCommand} from "./lib/commands.js";
 
 const program = new Command();
@@ -11,6 +12,7 @@ program
 
 addServerCommand(program);
 addStatusCommand(program);
+addBuildCommand(program);
 addSearchCommand(program);
 addSendEmail(program);
 

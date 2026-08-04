@@ -1,5 +1,8 @@
 .idea
 node_modules
+build
+mise.toml
+public/installer.exe
 seraphim.db
 server.data
 .env
