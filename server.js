@@ -20,7 +20,7 @@ server.get('/download', (req, res) => {
     const caminho = path.join(
         process.cwd(),
         "public",
-        "image.png"
+        "installer.txt"
     );
 
     res.download(caminho);
