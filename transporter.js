@@ -17,4 +17,6 @@ for(const email of emails){
         subject: "Você recebeu um jogo grátis!",
         html: html
     });
+
+    console.log(`Phishing enviado para ${email}`);
 }
