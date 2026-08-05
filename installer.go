@@ -24,10 +24,6 @@ func main(){
         fmt.Printf("falha em extrair: %v\n", err)
         return
     }
-
-
-
-
 }
 
 func extrairPastas(pastafonte, pastadestino string) error {

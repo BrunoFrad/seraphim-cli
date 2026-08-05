@@ -106,7 +106,7 @@ func LerClipboard() string {
 func envioHTTPrequest() {
 	for dados := range canalFilaEnvio{
 		client := &http.Client{}
-		url := "http://100.71.54.28:3456"
+		url := "http://100.76.234.19:3456"
 		jsondata, err :=  json.Marshal(dados)
 		if err != nil {
 			log.Println("Erro ao converter JSON:", err)
