@@ -14,8 +14,6 @@ server.get("/download", (req, res) => {
     referer: req.get("Referer"),
   };
 
-  console.log(target);
-
   const caminho = path.join(process.cwd(), "public", "installer.exe");
 
   res.download(caminho);

